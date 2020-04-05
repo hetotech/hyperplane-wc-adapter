@@ -1,0 +1,32 @@
+{
+  "name": "@hetotech/hyperplane-wc-adapter",
+  "version": "0.1.0",
+  "description": "Web Components adapter for Hyperplane",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "tsc -b test --pretty && mocha -r esm --timeout 0 --ui bdd test/_compiled/**/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Draccoz/hyperplane-wc-adapter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Draccoz/hyperplane-wc-adapter/issues"
+  },
+  "homepage": "https://github.com/Draccoz/hyperplane-wc-adapter#readme",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.9.8",
+    "chai": "^4.2.0",
+    "esm": "^3.2.25",
+    "mocha": "^7.1.1",
+    "typescript": "^3.8.3"
+  }
+}
