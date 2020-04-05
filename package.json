@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Draccoz/hyperplane-wc-adapter.git"
+    "url": "git+https://github.com/hetotech/hyperplane-wc-adapter.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Draccoz/hyperplane-wc-adapter/issues"
+    "url": "https://github.com/hetotech/hyperplane-wc-adapter/issues"
   },
-  "homepage": "https://github.com/Draccoz/hyperplane-wc-adapter#readme",
+  "homepage": "https://github.com/hetotech/hyperplane-wc-adapter#readme",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
