@@ -3,5 +3,3 @@
 /test/_compiled/
 /dist/
 /tsconfig.tsbuildinfo
-/hyperplane-wc-adapter.*
-!/hyperplane-wc-adapter.ts

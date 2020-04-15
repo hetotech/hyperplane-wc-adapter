@@ -4,20 +4,20 @@ import { HyperplaneWCAdapter, register } from '../hyperplane-wc-adapter';
 const { expect } = require('chai');
 describe('register', () => {
   it('should create a tag name to match kebab-cased creator function name', () => {
-    expect(register(function PascalCasedComponent(_node: HTMLElement) {}).tag).to.equal('pascal-cased-component');
-    expect(register(function camelCasedComponent(_node: HTMLElement) {}).tag).to.equal('camel-cased-component');
-    const ArrowFunction = (_node: HTMLElement) => {};
+    expect(register(function PascalCasedComponent(_node) {}).tag).to.equal('pascal-cased-component');
+    expect(register(function camelCasedComponent(_node) {}).tag).to.equal('camel-cased-component');
+    const ArrowFunction = (_node) => {};
     expect(register(ArrowFunction).tag).to.equal('arrow-function');
   });
   it('should create a class that extends HyperplaneWCAdapter named the same as creator function', () => {
-    const constructor = register(function PascalCasedComponent(_node: HTMLElement) {}).constructor;
+    const constructor = register(function PascalCasedComponent(_node) {}).constructor;
     expect(constructor.name).to.equal('PascalCasedComponent');
     expect(new constructor()).to.be.instanceOf(HyperplaneWCAdapter);
   });
   it('should create a class that executes the creator in a constructor', () => {
     let wasCalled = false;
     let calledWith = undefined;
-    const constructor = register(function PascalCasedComponent(node: HTMLElement) {
+    const constructor = register(function PascalCasedComponent(node) {
       wasCalled = true;
       calledWith = node;
     }).constructor;
@@ -26,7 +26,7 @@ describe('register', () => {
     expect(calledWith).to.equal(instance);
   });
   it('should register a created class as a web component under kebab-cased creator name', () => {
-    const constructor = register(function PascalCasedComponent(_node: HTMLElement) {}).constructor;
+    const constructor = register(function PascalCasedComponent(_node) {}).constructor;
     expect(customElements.get('pascal-cased-component')).to.equal(constructor);
   });
 });
@@ -70,11 +70,11 @@ describe('HyperplaneWCAdapter', () => {
     let observerCreated = false;
     const originalObserver = window.MutationObserver;
     window.MutationObserver = class MutationObserverSpy extends window.MutationObserver {
-      constructor(callback: (changes: MutationRecord[]) => void) {
+      constructor(callback) {
         super(callback);
         observerCreated = true;
       }
-    } as any;
+    };
     new HyperplaneWCAdapter();
     expect(observerCreated).to.be.true;
     window.MutationObserver = originalObserver;

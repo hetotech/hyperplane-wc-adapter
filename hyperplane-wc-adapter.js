@@ -1,21 +1,21 @@
 export class HyperplaneWCAdapter extends HTMLElement {
   constructor() {
     super();
-    let values = {} as { [ attributeName: string ]: string | null | undefined };
+    let values = {};
     const observer = new MutationObserver((changes) => {
       changes
-        .filter((record): record is MutationRecord & { target: HTMLElement, attributeName: string } => record.type === 'attributes')
+        .filter((record) => record.type === 'attributes')
         .map(({ target, attributeName }) => [
           attributeName,
           values[ attributeName ],
           values[ attributeName ] = target.getAttribute(attributeName)
-        ] as [string, string, string])
+        ])
         .forEach(([name, oldValue, newValue]) => this.attributeChangedCallback(name, oldValue, newValue));
     });
     observer.observe(this, { attributes: true });
   }
 
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+  attributeChangedCallback(name, oldValue, newValue) {
     this.dispatchEvent(new CustomEvent('attributeChanged', { detail: [name, oldValue, newValue] }));
   }
 
@@ -28,7 +28,11 @@ export class HyperplaneWCAdapter extends HTMLElement {
   }
 }
 
-export function register(creator: (node: HTMLElement) => void, name = creator.name) {
+/**
+ * @param {function(HTMLElement): void} creator
+ * @param {string} name
+ */
+export function register(creator, name = creator.name) {
   const kebabCased = name.replace(/([a-z])([A-Z])/g, (_, a, b) => `${a}-${b}`).toLowerCase();
   if (kebabCased.split(('-')).length < 2) {
     throw new Error(

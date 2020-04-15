@@ -3,5 +3,3 @@
 .gitignore
 .idea
 test
-tsconfig.tsbuildinfo
-hyperplane-wc-adapter.ts
