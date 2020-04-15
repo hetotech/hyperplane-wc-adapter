@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/hetotech/hyperplane-wc-adapter.git"
   },
-  "author": "",
+  "author": "Daniel Busłowicz",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hetotech/hyperplane-wc-adapter/issues"

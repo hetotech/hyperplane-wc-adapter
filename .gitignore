@@ -1,5 +1,2 @@
 /node_modules/
 .idea
-/test/_compiled/
-/dist/
-/tsconfig.tsbuildinfo
