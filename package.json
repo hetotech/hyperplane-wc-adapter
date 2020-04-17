@@ -3,6 +3,7 @@
   "version": "0.1.3",
   "description": "Web Components adapter for Hyperplane",
   "main": "hyperplane-wc-adapter.js",
+  "typings": "hyperplane-wc-adapter.d.ts",
   "scripts": {
     "test": "mocha -r esm --timeout 0 --ui bdd test/**/*.spec.js"
   },

@@ -28,10 +28,6 @@ export class HyperplaneWCAdapter extends HTMLElement {
   }
 }
 
-/**
- * @param {function(HTMLElement): void} creator
- * @param {string} name
- */
 export function register(creator, name = creator.name) {
   const kebabCased = name.replace(/([a-z])([A-Z])/g, (_, a, b) => `${a}-${b}`).toLowerCase();
   if (kebabCased.split(('-')).length < 2) {
