@@ -26,7 +26,7 @@ jobs:
 
     - name: Configure npm and git
       run: |
-        npm set //npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}
+        npm set //registry.npmjs.org/:_authToken=${{secrets.NPM_AUTH_TOKEN}}
         git config user.email "hetotech@users.noreply.github.com"
         git config user.name "GitHub Actions"
 
@@ -36,16 +36,19 @@ jobs:
     - name: Run tests
       run: npm run test
 
+    - name: Build
+      run: npm run build --if-present
+
     - name: Update version
-      run: npm version ${GITHUB_REF:10} -m "Auto updating version to match a release (${GITHUB_REF:10})"
       if: github.event_name == 'release'
+      run: npm version ${GITHUB_REF:10} -m "Auto updating version to match a release (${GITHUB_REF:10})"
 
     - name: Bump version
+      if: github.event_name == 'push'
       run: |
         npm version patch
-        VERSION=$(npm version | grep hyperplane-wc-adapter | sed "s/^.*hyperplane-wc-adapter': '//;s/',//")
+        VERSION=$(npm version | grep ${GITHUB_REPOSITORY:9} | sed "s/^.*${GITHUB_REPOSITORY:9}': '//;s/',//")
         git commit -m "Auto bumping patch version ($VERSION)" --amend
-      if: github.event_name == 'push'
 
     - name: Publish and push updated package.json
       run: |

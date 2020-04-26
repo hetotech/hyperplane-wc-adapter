@@ -17,9 +17,6 @@
     "url": "https://github.com/hetotech/hyperplane-wc-adapter/issues"
   },
   "homepage": "https://github.com/hetotech/hyperplane-wc-adapter#readme",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "devDependencies": {
     "chai": "^4.2.0",
     "esm": "^3.2.25",
