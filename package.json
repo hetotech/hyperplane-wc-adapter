@@ -1,6 +1,6 @@
 {
   "name": "@hetotech/hyperplane-wc-adapter",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Web Components adapter for Hyperplane",
   "main": "hyperplane-wc-adapter.js",
   "typings": "hyperplane-wc-adapter.d.ts",
